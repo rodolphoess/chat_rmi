@@ -7,7 +7,5 @@ Para se conectar ao servidor, cada cliente deverá indicar o host e a porta onde
   
 **Detalhes da aplicação:**
   
-- Para compilar o servidor
-      	javac -d bin -cp src/ src/Chat.java src/ChatServer.java
-- Para compilar o cliente
-	      javac -d bin -cp src/ src/Chat.java src/ChatClient.java
+- Para compilar o servidor: javac -d bin -cp src/ src/Chat.java src/ChatServer.java
+- Para compilar o cliente: javac -d bin -cp src/ src/Chat.java src/ChatClient.java
