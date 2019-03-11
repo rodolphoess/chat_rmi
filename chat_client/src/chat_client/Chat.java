@@ -29,30 +29,30 @@ public class Chat extends UnicastRemoteObject implements ChatInterface  {
 		return clientes;
 	}
 
-	public int getNumMensagem() throws RemoteException{
+	public int getNumeroMensagem() throws RemoteException{
 		return numMensagem;
 	}
  
-	public void send(String s) throws RemoteException{
+	public void enviar(String s) throws RemoteException{
 		System.out.println(s);
 		numMensagem++;
 	}	
 
-	public void addCliente(ChatInterface cliente) throws RemoteException {
-		send("["+cliente.getNome()+"] entá no chat!");
+	public void novoCliente(ChatInterface cliente) throws RemoteException {
+		enviar("["+cliente.getNome()+"] entá no chat!");
 		clientes.add(cliente);
 	}
 
-	public void removeCliente(ChatInterface cliente) throws RemoteException{
-		send("["+cliente.getNome()+"] saiu do chat!");
+	public void removerCliente(ChatInterface cliente) throws RemoteException{
+		enviar("["+cliente.getNome()+"] saiu do chat!");
 		clientes.remove(cliente);
 	}
 
-	public void atualizaClientes() throws RemoteException{
+	public void atualizarClientes() throws RemoteException{
 		List<ChatInterface> aux = clientes;
 		for(ChatInterface c:aux){
 			if(c.equals(null)){
-		    	removeCliente(c);				
+		    	removerCliente(c);				
 		    }
 		 }
 	}

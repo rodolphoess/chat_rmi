@@ -28,14 +28,14 @@ public class ChatClient {
 		    	while(true){
 		    		msg=s.nextLine().trim();
 		    		msg="Mensagem "+server.getNumeroMensagem()+" - "+cliente.getNome()+": "+msg;		    		
-	    			server.send(msg);
+	    			server.enviar(msg);
 	    			
 	    			server.atualizarClientes();
 	    			
 	    			otherClients = server.getClientes();
 	    			for(ChatInterface c:otherClients){
 	    				if(!c.equals(cliente))
-	    					c.send(msg);
+	    					c.enviar(msg);
 	    			}
 		    	}
  
