@@ -1,5 +1,6 @@
 package chat_server;
 
+import java.net.InetAddress;
 import java.rmi.Naming;
 import java.rmi.RMISecurityManager;
 import java.util.ArrayList;
@@ -11,6 +12,14 @@ public class ChatServer {
 	public static void main(String[] argv) {
 		
 		try {
+			InetAddress ip;
+	        String hostname;
+	        ip = InetAddress.getLocalHost();
+            hostname = ip.getHostName();
+            
+            System.out.println("Your current IP address : " + ip);
+            System.out.println("Your current Hostname : " + hostname);
+	        
 			if (System.getSecurityManager() == null) 
 				System.setSecurityManager(new RMISecurityManager());
 			@SuppressWarnings("resource")
