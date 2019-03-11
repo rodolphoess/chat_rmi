@@ -5,7 +5,7 @@ import java.util.*;
  
 public class ChatClient {
 	
-	String clientName;
+	String nomeCliente;
 	
 	public static void main (String[] argv) {
 	    try {
@@ -17,24 +17,24 @@ public class ChatClient {
 				Scanner s=new Scanner(System.in);
 		    	System.out.println("Digite o nome:");
 		    	String name=s.nextLine().trim();		    		    	
-		    	ChatInterface client = new Chat(name);
+		    	ChatInterface cliente = new Chat(name);
  
 		    	ChatInterface server = (ChatInterface)Naming.lookup("chat");
 		    	String msg="";
 
 		    	System.out.println("Chat aberto!");
-		    	server.newClient(client);
+		    	server.novoCliente(cliente);
  
 		    	while(true){
 		    		msg=s.nextLine().trim();
-		    		msg="Mensagem "+server.getNumberMessage()+" - "+client.getName()+": "+msg;		    		
+		    		msg="Mensagem "+server.getNumeroMensagem()+" - "+cliente.getNome()+": "+msg;		    		
 	    			server.send(msg);
 	    			
-	    			server.updateClients();
+	    			server.atualizarClientes();
 	    			
-	    			otherClients = server.getClients();
+	    			otherClients = server.getClientes();
 	    			for(ChatInterface c:otherClients){
-	    				if(!c.equals(client))
+	    				if(!c.equals(cliente))
 	    					c.send(msg);
 	    			}
 		    	}

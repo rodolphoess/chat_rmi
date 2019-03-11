@@ -6,49 +6,53 @@ import java.util.List;
 import java.util.ArrayList;
  
 public class Chat extends UnicastRemoteObject implements ChatInterface  {
- 
-	private static final long serialVersionUID = 5179276649815567504L;
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	public String name;
-	public ChatInterface client=null;
-	public int numberMessage=-1;
+	public ChatInterface cliente=null;
+	public int numMensagem=-1;
 
-	private List<ChatInterface> clients = new ArrayList<ChatInterface>();
+	private List<ChatInterface> clientes = new ArrayList<ChatInterface>();
  
 	public Chat(String n)  throws RemoteException { 
 		this.name=n;   
 	}
-	public String getName() throws RemoteException {
+	public String getNome() throws RemoteException {
 		return this.name;
 	}
 
-	public List<ChatInterface> getClients() throws RemoteException{
-		return clients;
+	public List<ChatInterface> getClientes() throws RemoteException{
+		return clientes;
 	}
 
-	public int getNumberMessage() throws RemoteException{
-		return numberMessage;
+	public int getNumMensagem() throws RemoteException{
+		return numMensagem;
 	}
  
 	public void send(String s) throws RemoteException{
 		System.out.println(s);
-		numberMessage = numberMessage+1;
+		numMensagem++;
 	}	
 
-	public void newClient(ChatInterface client) throws RemoteException {
-		send("["+client.getName()+"] entá no chat!");
-		clients.add(client);
+	public void addCliente(ChatInterface cliente) throws RemoteException {
+		send("["+cliente.getNome()+"] entá no chat!");
+		clientes.add(cliente);
 	}
 
-	public void removeClient(ChatInterface client) throws RemoteException{
-		send("["+client.getName()+"] saiu do chat!");
-		clients.remove(client);
+	public void removeCliente(ChatInterface cliente) throws RemoteException{
+		send("["+cliente.getNome()+"] saiu do chat!");
+		clientes.remove(cliente);
 	}
 
-	public void updateClients() throws RemoteException{
-		List<ChatInterface> aux = clients;
+	public void atualizaClientes() throws RemoteException{
+		List<ChatInterface> aux = clientes;
 		for(ChatInterface c:aux){
 			if(c.equals(null)){
-		    	removeClient(c);				
+		    	removeCliente(c);				
 		    }
 		 }
 	}
