@@ -3,6 +3,7 @@ package chat_server;
 import java.net.InetAddress;
 import java.rmi.Naming;
 import java.rmi.RMISecurityManager;
+import java.rmi.registry.LocateRegistry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,16 +13,16 @@ public class ChatServer {
 	public static void main(String[] argv) {
 		
 		try {
-			InetAddress ip;
-	        String hostname;
-	        ip = InetAddress.getLocalHost();
-            hostname = ip.getHostName();
-            
-            System.out.println("Your current IP address : " + ip);
-            System.out.println("Your current Hostname : " + hostname);
-	        
-			if (System.getSecurityManager() == null) 
-				System.setSecurityManager(new RMISecurityManager());
+//			InetAddress ip;
+//	        String hostname;
+//	        ip = InetAddress.getLocalHost();
+//            hostname = ip.getHostName();
+//            
+//            System.out.println("Your current IP address : " + ip);
+//            System.out.println("Your current Hostname : " + hostname);
+//	        
+			//if (System.getSecurityManager() == null) 
+				//System.setSecurityManager(new RMISecurityManager());
 			@SuppressWarnings("resource")
 			Scanner s = new Scanner(System.in);
 			System.out.println("Digite o nome: ");
@@ -29,10 +30,11 @@ public class ChatServer {
 
 	    	List<ChatInterface> clients = new ArrayList<ChatInterface>();
 
+	    	LocateRegistry.createRegistry(1099);
  
 	    	Chat server = new Chat(name);	
- 
-	    	Naming.rebind("chat", server);
+	    	
+	    	Naming.rebind("rmi://localhost:1099/ChatServer", server);
  
 	    	System.out.println("Chat aberto!");
  
@@ -51,6 +53,7 @@ public class ChatServer {
 			
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("Erro no chat: " + e);
 		}
 	}

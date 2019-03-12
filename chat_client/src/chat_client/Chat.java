@@ -3,6 +3,9 @@ package chat_client;
 import java.rmi.*;
 import java.rmi.server.*;
 import java.util.List;
+
+import chat_server.ChatInterface;
+
 import java.util.ArrayList;
  
 public class Chat extends UnicastRemoteObject implements ChatInterface  {

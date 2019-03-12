@@ -1,11 +1,10 @@
-package chat_client;
+package chat_server;
 
-import java.rmi.*;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.List;
 
-//import chat_server.ChatInterface;
- 
-public interface ChatInterface extends Remote{
+public interface ChatInterface extends Remote {
 	
 	public String getNome() throws RemoteException;
 	

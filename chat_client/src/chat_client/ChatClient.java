@@ -2,6 +2,8 @@ package chat_client;
 
 import java.rmi.*;
 import java.util.*;
+
+import chat_server.ChatInterface;
  
 public class ChatClient {
 	
@@ -12,14 +14,14 @@ public class ChatClient {
 
 	    		List<ChatInterface> otherClients = new ArrayList<ChatInterface>();
 
-		    	System.setSecurityManager(new RMISecurityManager());
+		    	//System.setSecurityManager(new RMISecurityManager());
 		    	@SuppressWarnings("resource")
 				Scanner s=new Scanner(System.in);
 		    	System.out.println("Digite o nome:");
 		    	String name=s.nextLine().trim();		    		    	
 		    	ChatInterface cliente = new Chat(name);
  
-		    	ChatInterface server = (ChatInterface)Naming.lookup("chat");
+		    	ChatInterface server = (ChatInterface)Naming.lookup("rmi://localhost:1099/ChatServer");
 		    	String msg="";
 
 		    	System.out.println("Chat aberto!");
