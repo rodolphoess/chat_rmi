@@ -14,7 +14,6 @@ public class ChatClient {
 
 	    		List<ChatInterface> otherClients = new ArrayList<ChatInterface>();
 
-		    	//System.setSecurityManager(new RMISecurityManager());
 		    	@SuppressWarnings("resource")
 				Scanner s=new Scanner(System.in);
 		    	System.out.println("Digite o nome:");

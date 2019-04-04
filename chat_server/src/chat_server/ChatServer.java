@@ -13,16 +13,6 @@ public class ChatServer {
 	public static void main(String[] argv) {
 		
 		try {
-//			InetAddress ip;
-//	        String hostname;
-//	        ip = InetAddress.getLocalHost();
-//            hostname = ip.getHostName();
-//            
-//            System.out.println("Your current IP address : " + ip);
-//            System.out.println("Your current Hostname : " + hostname);
-//	        
-			//if (System.getSecurityManager() == null) 
-				//System.setSecurityManager(new RMISecurityManager());
 			@SuppressWarnings("resource")
 			Scanner s = new Scanner(System.in);
 			System.out.println("Digite o nome: ");
